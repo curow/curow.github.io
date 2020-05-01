@@ -16,20 +16,22 @@
 title: Vehicle Trajectory Prediction
 email: zhiwenxie1900@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  这个网站的目的是用来记录车辆轨迹预测项目进展的。
+  this website is used to record the process of vehicle trajectory
+  pridiction project.
 github_username: curow
 minimal_mistakes_skin: default
 search: true
+logo: "/assets/images/site-logo.png"
 
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
+repository: "curow/curow.github.io"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-# timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone: CN
+timezone: Asia/Shanghai
 
 include:
   - _pages
@@ -37,14 +39,14 @@ include:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
 
 # Plugins (previously gems:)
 plugins:
@@ -58,7 +60,7 @@ plugins:
 author:
   name   : "Zhiwen Xie"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Graduate Student as Zhejiang University"
+  bio    : "Graduate Student at Zhejiang University"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -88,7 +90,7 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
 
 category_archive:
   type: liquid
