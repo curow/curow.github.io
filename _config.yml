@@ -26,6 +26,7 @@ logo: "/assets/images/site-logo.png"
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
+# theme: mmistakes/minimal-mistakes
 repository: "curow/curow.github.io"
 # Outputting
 permalink: /:categories/:title/
