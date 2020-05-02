@@ -36,3 +36,6 @@ feature_row:
 ---
 
 {% include feature_row %}
+
+<style type="text/css">
+</style>
