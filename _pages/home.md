@@ -6,31 +6,31 @@ header:
   overlay_color: "#5e616c"
   overlay_image: /assets/images/dummy.jpg
   actions:
-    - label: "<i class='fas fa-download'></i> Install now"
-      url: "/docs/quick-start-guide/"
+    - label: "<i class='fab fa-fw fa-github'></i> Source Code"
+      url: "https://github.com/curow/vehicle-trajectory-prediction"
 excerpt: >
-  A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.<br />
-  <small><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.19.2">Latest release v4.19.2</a></small>
+  A project aiming to address the problem of multi-vehicles trajectory prediction<br/>
+  <small><a href="https://github.com/curow/vehicle-trajectory-prediction/releases/tag/v0.0.1">Latest release v0.0.1</a></small>
 feature_row:
   - image_path: /assets/images/dummy.jpg
-    alt: "customizable"
-    title: "Super customizable"
-    excerpt: "Everything from the menus, sidebars, comments, and more can be configured or set with YAML Front Matter."
-    url: "/docs/configuration/"
+    alt: "interaction-aware"
+    title: "Interaction Aware"
+    excerpt: "The interaction between ego vehicle and surrounding vehicles is vital for the prediction of trajectories in dense traffic"
+    url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/dummy.jpg
-    alt: "fully responsive"
-    title: "Responsive layouts"
-    excerpt: "Built with HTML5 + CSS3. All layouts are fully responsive with helpers to augment your content."
-    url: "/docs/layouts/"
+    alt: "physical-aware"
+    title: "Physical Aware"
+    excerpt: "A successful prediction algorithm must be aware of its environment context to make more accurate prediction"
+    url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/dummy.jpg
-    alt: "100% free"
-    title: "100% free"
-    excerpt: "Free to use however you want under the MIT License. Clone it, fork it, customize it... whatever!"
-    url: "/docs/license/"
+    alt: "traffic-rules-aware"
+    title: "Traffic Rules Aware"
+    excerpt: "Leanring algorithm should be able to rule out some of its less plausible predicions based on real world traffic rules"
+    url: "/"
     btn_class: "btn--primary"
     btn_label: "Learn more"      
 ---
