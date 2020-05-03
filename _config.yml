@@ -31,7 +31,7 @@ remote_theme: mmistakes/minimal-mistakes
 repository: "curow/curow.github.io"
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+# paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Shanghai
 
