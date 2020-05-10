@@ -127,8 +127,7 @@ toc_sticky: true
 
    
 
-8. Short-term prediction of safety and operation impacts of lane changes in oscillations with empirical
-    vehicle trajectories
+8. Short-term prediction of safety and operation impacts of lane changes in oscillations with empirical vehicle trajectories
 
    M Li, Z Li, C Xu, T Liu - Accident Analysis & Prevention, 2020 - Elsevier
 
@@ -145,10 +144,9 @@ toc_sticky: true
    
 
 10. A Dual Learning Model for Vehicle Trajectory Prediction
+    M Khakzar, A Rakotonirainy, A Bond... - IEEE Access, 2020 - ieeexplore.ieee.org
 
-   M Khakzar, A Rakotonirainy, A Bond... - IEEE Access, 2020 - ieeexplore.ieee.org
-
-   这篇仍然是预测ego vehicle的轨迹，结构是LSTM encoder decoder，输入的是ego vehicle周围的Lane Occupancy Map以及Risk Map，Risk是拿TTC（Time To Collision）来衡量的。
+    这篇仍然是预测ego vehicle的轨迹，结构是LSTM encoder decoder，输入的是ego vehicle周围的Lane Occupancy Map以及Risk Map，Risk是拿TTC（Time To Collision）来衡量的。
 
    
 
