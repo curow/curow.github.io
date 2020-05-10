@@ -1,5 +1,5 @@
 ---
-title: "Study On Self-Driving Vehicle Sensor Range"
+title: "Study on Self-Driving Vehicle Sensor Range"
 categories:
   - Blog
 tags:
