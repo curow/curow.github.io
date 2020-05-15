@@ -67,9 +67,13 @@ toc_sticky: true
 
    这篇文章直接预测某个场景下多个车辆的未来可能的多个轨迹，不仅考虑了场景中agents之间的互动，还考虑了scene context，不同的agents是不同的RNN网络来预测，但是它们的权重是共享的。
 
-## 老师推荐（ref1：24篇，ref2：54篇）
+## 老师推荐（ref1：24篇，ref2：52篇）
 
-### ref2
+### reference 1
+
+1. 
+
+### reference 2
 
 1. Key feature selection and risk prediction for lane-changing behaviors based on vehicles' trajectory data
 
@@ -352,7 +356,153 @@ toc_sticky: true
 
     J Liu, Y Luo, H Xiong, T Wang... - 2019 IEEE Intelligent ..., 2019 - ieeexplore.ieee.org
 
-    这一篇还是预测单车的换道意图（左转、右转、保持）、司机的驾驶风格、以及驾驶轨迹。
+    这一篇还是预测单车的，预测单车的换道意图（左转、右转、保持）、司机的驾驶风格、以及驾驶轨迹。基于的方案是DBN（Dynamic Bayesian Network) 以及高斯过程。
+    
+    
+    
+36. Integrated deep learning and stochastic car-following model for traffic dynamics on multi-lane freeways
+
+    S Lee, D Ngoduy, M Keyvan-Ekbatani - Transportation research part C ..., 2019 - Elsevier
+
+    没看懂。
+
+    
+
+37. Prediction of Surrounding Vehicles Lane Change Intention Using Machine Learning
+
+    A Benterki, M Boukhnifer, V Judalet... - 2019 10th IEEE ..., 2019 - ieeexplore.ieee.org
+
+    这一篇是传统的机器学习方案来预测车辆的换道意图，分成两步，首先是特征提取，选取的特征是偏航角度以及和车辆和左右车道的距离，然后是用机器学习模型训练和分类，选取了神经网络和支持向量机，总的来说没什么新意。
+
+    
+
+38. Research on Lane-Change Online-Planning for Automotive Vehicles based on Model Predictive Control
+
+    S Li, L Xiao, S Cheng, C Huang... - ... WRC Symposium on ..., 2019 - ieeexplore.ieee.org
+
+    这个是控制方面的文章，考虑的是自动驾驶车辆换道轨迹的生成和跟踪，重点在于构建的框架中轨迹生成和跟踪这两个阶段是不断迭代的，使得模型对环境变化更有适应性。不过和我们想要研究的换道决策及轨迹预测关系应该不大。
+
+    
+
+39. A Personalized Model for Driver Lane-Changing Behavior Prediction Using Deep Neural Network
+
+    J Gao, H Zhu, YL Murphey - 2019 2nd International Conference ..., 2019 - ieeexplore.ieee.org
+
+    这一篇还是预测换道意图，当做分类问题解决的，模型输入是GPS信息、车辆速度、朝向还有司机的生理信息（用的是自己采集的数据），然后模型的架构用的是Root-ResNet（一种CNN）。
+
+    
+
+40. Trajectory Planning and Safety Assessment of Autonomous Vehicles Based on Motion Prediction and Model Predictive Control
+
+    Y Wang, Z Liu, Z Zuo, Z Li, L Wang... - IEEE Transactions on ..., 2019 - ieeexplore.ieee.org
+
+    这篇文章的重点也在于控制，我重点看的是他这里对其他车辆的预测，但是这一部分还是过于简化，假设了其他车辆不会变道，然后用车辆运动模型和蒙特卡洛模拟来获得对其他车辆运动情况的预测结果。
+
+    
+
+41. An analysis of the lane changing manoeuvre on roads: the contribution of inter-vehicle cooperation via communication
+
+    S Ammoun, F Nashashibi... - 2007 IEEE Intelligent ..., 2007 - ieeexplore.ieee.org
+
+    这篇文章中主要把通信作为获取其他车辆信息的手段，当做背景介绍了一下，对于车辆换道模型的建模采用的是5阶多项式来拟合换道轨迹。
+
+    
+
+42. Modeling lane-changing behavior in a connected environment: A game theory approach
+
+    A Talebpour, HS Mahmassani, SH Hamdar - Transportation Research Part ..., 2015 - Elsevier
+
+    这篇文章采用博弈论对ego vehicle的换道决策进行建模，主要考虑了无通信和有通信情况下的ego vehicle和lag vehicle的零和博弈，这里假设通信给出的信息包含ego vehicle周围车辆的换道决策，而这恰恰是我们想要解决的问题。。
+
+    
+
+43. Design and efficiency measurement of cooperative driver assistance system based on wireless communication devices
+
+    S Ammoun, F Nashashibi - Transportation research part C: emerging ..., 2010 - Elsevier
+
+    这篇文章采用802.11p协议（WAVE）来研究车辆间通信对ITS的影响，选取了两个场景，一个是交叉路口的碰撞预警，另一个是车辆换道的决策辅助。两个场景用的信息均为通过车辆通信获取的其他车辆GPS信号，在换道决策辅助场景中，采用了5阶多项式来拟合车辆换道轨迹，并增加了诸如横/纵向加速度限制等约束，从而给出3个层次的换道预警：
+
+    红色：如果车主现在进行换道，那么很可能发生碰撞
+
+    橙色：如果车主现在换道且其他车辆行驶轨迹不变，那么5s内可能发生碰撞
+
+    绿色：如果车主现在换道，10s内应该不会发生碰撞
+
+    这篇文章讨论的是本车的换道预警，对其他车辆的轨迹预测是比较基本的，也没有考虑到车辆之间的互动性对车辆轨迹的影响，因此如果在真实道路上，换道预警可能会有很多false alarm，导致车主选择忽视这个信息。
+
+    
+
+44. Decentralized cooperative lane-changing decision-making for connected autonomous vehicles
+
+    J Nie, J Zhang, W Ding, X Wan, X Chen, B Ran - IEEE Access, 2016 - ieeexplore.ieee.org
+
+    这篇文章考虑的是在fully connected and automated 环境下，每辆CAV如何进行换道决策，这里的假设是通信无时延、换道行为是瞬时的。然后提出的框架包括3个部分：相关车辆状态预测、候选决策生成、以及和其他车辆协同。状态预测是采用基于以往文献中提出的基于模型的方法，类似于IDM，不过考虑了target vehicle前方的多个车辆状态。
+
+    
+
+45. Investigation of cooperative driving behaviour during lane change in a multi-driver simulation environment
+
+    M Heesen, M Baumann, J Kelsch... - Human Factors and ..., 2012 - researchgate.net
+
+    这篇文章比较有意思，作者招募了平均驾龄为13年的司机来做实验考察换道决策和协同换道行为受到哪些因素的影响，实验环境是驾驶模拟器，每次实验包含了2个人类参与者，一个决定是否换道，另一个决定是否协同换道。实验发现对于进行换道决策的司机而言，他们会考虑到协同换道的司机存在的选择。对于协同换道的司机而言，能否预测/解析想要换道的司机的意图是影响他们是否进行协同换道的关键因素。作者给出的建议是如果能够给出其他车辆的换道概率，有助于司机进行更好的协同换道决策（也说明了我们希望进行的研究是比较有意义的）。
+
+    
+
+46. Tracking and behavior reasoning of moving vehicles based on roadway geometry constraints
+
+    K Jo, M Lee, J Kim, M Sunwoo - IEEE Transactions on ..., 2016 - ieeexplore.ieee.org
+
+    这一篇和我们的目的是相似的，主要是通过跟踪周围车辆的轨迹来预测他们的intention，跟踪采用的是车辆自身传感器给出的数据，然后结合road geometry信息给出了curvilinear坐标系（曲线坐标系）下车辆的坐标，intention的预测采用的是基于模型的方法，采用了多个模型（CVLK，CALK，CVLC，CALC）以及IMM（interacting multiple model）来预测。
+
+    这里面实验是实车验证，跟踪的真值是target vehicle的高精度GPS信息，其实在车联网的环境下，其他车辆的GPS信息是可以直接通过通信拿到的，在车辆均有OBU的情况下应该会好于这篇文章的方法。
+
+    
+
+47. Minimizing the disruption of traffic flow of automated vehicles during lane changes
+
+    D Desiraju, T Chantem... - IEEE Transactions on ..., 2014 - ieeexplore.ieee.org
+
+    这篇文章考虑的背景是fully connected and automated，他想要最大化所有车辆换道的次数从而增加交通吞吐量并且减少交通拥堵，他这个主要考虑的还是换道决策而不是预测，和我们的目标关系不大。
+
+    
+
+48. Carrot and stick: A game-theoretic approach to motivate cooperative driving through social interaction
+
+    M Zimmermann, D Schopf, N Lütteken, Z Liu... - ... Research Part C ..., 2018 - Elsevier
+
+    这篇文章采用驾驶模拟器研究如何设置游戏策略来让驾驶员更愿意进行协同驾驶，更偏向心理学，不涉及对车辆轨迹的预测。
+
+    
+
+49. Cooperative driving and lane changing modeling for connected vehicles in the vicinity of traffic signals: A cyber-physical perspective
+
+    Y He, D Sun, M Zhao, S Cheng - IEEE Access, 2018 - ieeexplore.ieee.org
+
+    这篇文章主要是结合智能驾驶员模型和v2x通信下的换道决策（在换道不安全的时候发送换道换道请求给周围的车辆）来建模协同驾驶。
+
+    
+
+50. Acquisition of Relative Trajectories of Surrounding Vehicles using GPS and SRC based V2V Communication with Lane Level Resolution.
+
+    Z Peng, S Hussain, MI Hayee, M Donath - VEHITS, 2017 - scitepress.org
+
+    这篇文章的目的是靠标准的GPS和车辆间通信获取ego vehicle周围车辆的车道级别轨迹，基本思想是由于车辆的GPS误差主要来源于大气效应，而相邻的车辆这种误差是相近的，所以尽管绝对位置的误差较大，通过通信获取其他车辆的GPS后减去本车的可以使得这个误差被消除，从而获取相邻车辆更为精确的车道级别轨迹。
+
+    
+
+51. Model predictive control–based cooperative lane change strategy for improving traffic flow
+
+    D Wang, M Hu, Y Wang, J Wang... - Advances in ..., 2016 - journals.sagepub.com
+
+    这篇文章是中心化控制，采用V2V通信和MPC，通过构建一个优化问题来实现协同换道行为，target vehicle的换道主要考虑邻近车辆可接受的加速度和减速度。
+
+    
+
+52. Cooperative lane change model for connected vehicles under congested traffic conditions
+
+    D Wang, J Wang, Y Wang, S Tian - CICTP 2015, 2015 - ascelibrary.org
+
+    无法下载
 
 # 性能指标
 
