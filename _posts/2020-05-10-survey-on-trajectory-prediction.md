@@ -66,12 +66,202 @@ toc_sticky: true
    C Tang, RR Salakhutdinov - Advances in Neural Information …, 2019 - papers.nips.cc
 
    这篇文章直接预测某个场景下多个车辆的未来可能的多个轨迹，不仅考虑了场景中agents之间的互动，还考虑了scene context，不同的agents是不同的RNN网络来预测，但是它们的权重是共享的。
+   
+   
 
 ## 老师推荐（ref1：24篇，ref2：52篇）
 
 ### reference 1
 
-1. 
+1. A neural network model for driver's lane-changing trajectory prediction in urban traffic flow
+
+   C Ding, W Wang, X Wang, M Baumann - Mathematical Problems in ..., 2013 - hindawi.com
+
+   相对早期的工作，采用了2层神经网络BPNN，输入是一个向量，包含一秒10帧的横向的数据，输出是下一秒10帧的预测。训练方法是Levenberg-Marquardt，（这个是经典的优化算法，只用到了一阶雅克比信息，但是对二阶海森也进行了估计），对比了Elman Network（早期的一种RNN），发现BPNN表现要好一些。
+
+   
+
+2. Trajectory prediction of a lane changing vehicle based on driver behavior estimation and classification
+
+   P Liu, A Kurt - 17th international IEEE conference on ..., 2014 - ieeexplore.ieee.org
+
+   这篇文章并不是预测车辆是否变道，而是预测车辆变道之后它的轨迹是怎么样的，behavior estimation其实就是有一个分支结构对司机的换道轨迹做一个分类（危险或者正常），总体采用的还是基于概率的方案，HMM（Hidden Markov Model）。
+
+   
+
+3. Prediction of lane change trajectories through neural network
+
+   RS Tomar, S Verma, GS Tomar - ... International Conference on ..., 2010 - ieeexplore.ieee.org
+
+   这篇结构更简单，采用的是MLP，上一阶段状态作为输入，下一阶段状态作为输出。
+
+   
+
+4. Predicting driver's lane-changing decisions using a neural network model
+
+   J Zheng, K Suzuki, M Fujita - Simulation Modelling Practice and Theory, 2014 - Elsevier
+
+   这篇文章采用五层MLP来预测target vehicle是否换道，输入是自身车道和相邻两个车道的车辆状态（相对速度、相对距离、类型），然后还分析了实验结果，对重卡车对司机换道的影响作了sensitivity analysis。
+
+   
+
+5. Lane-change detection based on vehicle-trajectory prediction
+
+   H Woo, Y Ji, H Kono, Y Tamura... - IEEE Robotics and ..., 2017 - ieeexplore.ieee.org
+
+   这篇文章重点在于预测target vehicle自身的intent，为了预测intent，作者采用了SVM来分类，特征是和中心线距离、横向加速度、以及一个potential feature（用来刻画周围车辆对target vehicle的影响）。另一方面，作者考虑到intent预测和轨迹预测是很相关的，所以通过机器人领域常用的势场法来预测车辆轨迹（这个是轨迹规划的方法，可以take accounts周围的障碍物），结合这两种方式最终给出target vehicle的intent。
+
+   
+
+6. Lane-changes prediction based on adaptive fuzzy neural network
+
+   J Tang, F Liu, W Zhang, R Ke, Y Zou - Expert Systems with Applications, 2018 - Elsevier
+
+   这篇文章是通过FNN（fuzzy neural network）来预测target vehicle的变道决策，特征还是人为选取，这个adaptive是指通过FNN的预测误差来指导FNN网络更新。
+
+   
+
+7. Lane change trajectory prediction by using recorded human driving data
+
+   W Yao, H Zhao, P Bonnifait... - 2013 IEEE Intelligent ..., 2013 - ieeexplore.ieee.org
+
+   这篇文章基本思想比较简单，相对于以往工作用数学模型生成换道轨迹，这篇文章记录了真实车辆换道的轨迹储存在数据库，然后在当前车辆准备换道的时候，从数据库中找到K个最相近的换道轨迹，然后做插值从而生成新的轨迹。
+
+   
+
+8. Lane changing prediction at highway lane drops using support vector machine and artificial neural network classifiers
+
+   Y Dou, F Yan, D Feng - 2016 IEEE International Conference on ..., 2016 - ieeexplore.ieee.org
+
+   内容和标题差不多。。基本就是深度学习之前的一些套路：处理数据，手动选取特征，分类（SVM或者ANN）。选取的数据有和前车以及后车的速度差、加速度差、距离差。然后在非merge场景下有94%的准确性，merge场景下78%。
+
+   
+
+9. Neural network based lane change trajectory prediction in autonomous vehicles
+
+   RS Tomar, S Verma - Transactions on computational science XIII, 2011 - Springer
+
+   和前面的基于NN的工作没有太大差别，只是介绍的详细一些。
+
+   
+
+10. Real time trajectory prediction for collision risk estimation between vehicles
+
+    S Ammoun, F Nashashibi - 2009 IEEE 5th International ..., 2009 - ieeexplore.ieee.org
+
+    这篇文章是reference 2 第41个的prior work，思路差不多，这个侧重点在于通过轨迹预测来估计碰撞风险，轨迹预 测采用的是Kalman filter.
+
+    
+
+11. Multi-parameter prediction of drivers' lane-changing behaviour with neural network model
+
+    J Peng, Y Guo, R Fu, W Yuan, C Wang - Applied ergonomics, 2015 - Elsevier
+
+    这篇文章主要是做了实验，在实际的车辆上放上传感器，收集司机和车辆的各种信息，然后通过简单的神经网络进行判断到底是lane-keeping还是lane-changing。
+
+    
+
+12. An analysis of the lane changing manoeuvre on roads: the contribution of inter-vehicle cooperation via communication
+
+    S Ammoun, F Nashashibi... - 2007 IEEE Intelligent ..., 2007 - ieeexplore.ieee.org
+
+    重复
+
+    
+
+13. Convolutional social pooling for vehicle trajectory prediction
+
+    N Deo, MM Trivedi - ... of the IEEE Conference on Computer ..., 2018 - openaccess.thecvf.com
+
+    这篇文章目的是预测target vehicle周围车辆的未来轨迹以及类型，总体结构用的是LSTM encoder decoder，创新点在于结构中的Convolutional Social Pooling层，目的是解决普通LSTM中如果直接将ego vehicle周围的车辆信息输入，会有空间位置丢失的问题。
+
+    
+
+14. Game theoretic approach for predictive lane-changing and car-following control
+
+    M Wang, SP Hoogendoorn, W Daamen... - ... Research Part C ..., 2015 - Elsevier
+
+    这篇文章偏向于target vehicle本身的控制，对其他车辆的预测是基于模型的方法，控制策略本身是作为优化问题来解决的，解得的策略是车辆换道的离散序列（即换到哪个道），具体的换道轨迹是三角函数样式的。
+
+    
+
+15. Multivariate time series prediction of lane changing behavior using deep neural network
+
+    J Gao, YL Murphey, H Zhu - Applied Intelligence, 2018 - Springer
+
+    这篇文章提出的模型是一个Group-wise CNN结构，输入是采集的脑电信号、肌电信号等司机的信息，想要从这些信息中判断司机的意图，这篇的创新点在于这个Group-wise，作者认为CNN直接用于时变信号分析缺点是相邻的信号可能没有什么关系，不同于图像信息在空间上是有关系的，所以作者提出对这些信号进行分组，并给出了一种学习分组的算法，从而让相关的信号在一个卷积分支。
+
+    
+
+16. Vehicle trajectory prediction based on motion model and maneuver recognition
+
+    A Houenou, P Bonnifait, V Cherfaoui... - 2013 IEEE/RSJ ..., 2013 - ieeexplore.ieee.org
+
+    这篇文章提出的系统框架还是基于模型和车辆maneuver的，两个主要部分，一个是用CYRA（Constant Yaw and Acceleration)模型直接预测车辆轨迹，另一个是是先识别车辆的maneuver再去根据这个生成车辆轨迹，最后将两种方法生成的轨迹结合得到最终的轨迹。
+
+    
+
+17. Multi-modal trajectory prediction of surrounding vehicles with maneuver based lstms
+
+    N Deo, MM Trivedi - 2018 IEEE Intelligent Vehicles Symposium ..., 2018 - ieeexplore.ieee.org
+
+    重复
+
+    
+
+18. An LSTM network for highway trajectory prediction
+
+    F Altché, A de La Fortelle - 2017 IEEE 20th International ..., 2017 - ieeexplore.ieee.org
+
+    这篇文章采用LSTM预测target vehicle车辆的轨迹，输入包括了周围9辆车的轨迹（每个车道3辆），架构也比较简单，就是一层LSTM网络加上两层fully connected网络。实验给出的预测10s的lateral RMS小于0.7m，纵向速度RMS小于3m/s。
+
+    这一篇引用量比较多，可能在当时说明了基于数据的方法要好于基于模型的方案，但是感觉从现在的角度来看参考价值不大。
+
+    
+
+19. Modeling mandatory lane changing using Bayes classifier and decision trees
+
+    Y Hou, P Edara, C Sun - IEEE Transactions on Intelligent ..., 2013 - ieeexplore.ieee.org
+
+    这个用的是传统的机器学习方法，采用贝叶斯分类器以及决策树，还是选取特征然后分类那一套，实验发现两者结合效果最好（其实就是boosting的概念）。比较有意思的是最后的结果：在非汇合场景中有94.3%的几率正确识别到换道，汇合场景中只有79.3%。之前的几篇采用传统机器学习方法的得到的也差不多是这个结果，可能也说明了在interaction比较强的环境下，这些方法基本是不适用的；当然，这个结果是数据不均衡造成的，毕竟论文中非汇合场景的训练用例有459个，汇合的只有208个，相差一倍多。
+
+    
+
+20. Freeway traffic oscillations: observations and predictions
+
+    M Mauch, MJ Cassidy - ... of the 15th international symposium on ..., 2002 - emerald.com
+
+    这篇文章主要是调查交通流的oscillation受哪些因素的影响，并对其进行了建模，然后给出的结论是在moderately dense的交通流下，oscillation大部分是由于换道行为引起的。这个文章应该可以作为研究换道预测的动机来引用。
+
+    
+
+21. Situation assessment and decision making for lane change assistance using ensemble learning methods
+
+    Y Hou, P Edara, C Sun - Expert Systems with Applications, 2015 - Elsevier
+
+    这个和19是一个作者，这回方法换成了ensemble learning，随机森林和Adaboost，然后结果有了一点提升。
+
+    
+
+22. Recent developments and research needs in modeling lane changing
+
+    Z Zheng - Transportation research part B: methodological, 2014 - Elsevier
+
+    这篇文章是换道模型的研究的一个综述，将这些研究分成了LCD（Lane Change Decision making）和LCI （Lane Change Impact），即换道的行为决策以及换道对周围车辆的影响。最后作者认为我们目前的建模还是不完整的，需要建立一个comprehensive的模型来同时考虑LCD以及LDI。
+
+    
+
+23. Decentralized cooperative lane-changing decision-making for connected autonomous vehicles
+
+    J Nie, J Zhang, W Ding, X Wan, X Chen, B Ran - IEEE Access, 2016 - ieeexplore.ieee.org
+
+    重复
+
+    
+
+24. Stochastic modeling and real-time prediction of vehicular lane-changing behavior
+
+    JB Sheu, SG Ritchie - Transportation Research Part B: Methodological, 2001 - Elsevier
 
 ### reference 2
 
@@ -364,7 +554,7 @@ toc_sticky: true
 
     S Lee, D Ngoduy, M Keyvan-Ekbatani - Transportation research part C ..., 2019 - Elsevier
 
-    没看懂。
+    这篇文章提出了一个车辆横向运动的模型，采用的是CNN，给出左右换道以及车道保持不变的决策。
 
     
 
