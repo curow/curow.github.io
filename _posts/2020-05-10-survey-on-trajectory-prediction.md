@@ -262,6 +262,8 @@ toc_sticky: true
 24. Stochastic modeling and real-time prediction of vehicular lane-changing behavior
 
     JB Sheu, SG Ritchie - Transportation Research Part B: Methodological, 2001 - Elsevier
+    
+    这篇文章是在交通流的角度研究换道，主要是预测在出现交通事故的时候换道情况有什么变化，和我们的研究关系应该不大。
 
 ### reference 2
 
