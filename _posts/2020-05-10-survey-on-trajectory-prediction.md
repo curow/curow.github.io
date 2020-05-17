@@ -1,5 +1,6 @@
 ---
 title: "Survey on Vehicle Trajectory Prediction"
+last_modified_at: 2020-05-17
 categories:
   - Blog
 tags:
